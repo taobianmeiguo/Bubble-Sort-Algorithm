@@ -1,0 +1,87 @@
+//Programmer: Jie Sun
+//Program: Bubble Sort
+//Course: Discrete Math
+//Date: 12/11/2015
+
+import java.util.Scanner;
+
+
+public class GoBubble {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int length;
+		Bubblesort bubble;
+		
+		Scanner keyboard= new Scanner(System.in);
+		
+		System.out.print("How many numbers do you wanna sort: ");
+		length=keyboard.nextInt();
+		
+		bubble=new Bubblesort(length);
+		
+		System.out.print("\nAfter sorting, the numbers you input are: "+bubble.toString());
+	}
+
+}
+
+class Bubblesort {
+	int length;
+	int[] array;
+	Scanner keyboard= new Scanner(System.in);
+	
+	//Constructor
+	Bubblesort (int length)
+	{
+		this.length=length;
+		array=new int[length];
+		input();
+		sort();
+	}
+	
+	//Get numbers from the user
+	public void input()
+	{
+		for (int i=0;i<length;i++)
+		{
+			System.out.print("Input a number: ");
+			array[i]=keyboard.nextInt();
+		}
+	}
+	
+	//Bubble sort method
+	public void sort()
+	{
+		boolean flag=true;
+		int temp=0, j=0;
+		
+		while (flag)
+		{
+			flag=false;
+			j++;
+			for(int i=0;i<array.length-j;i++)
+			{
+				if(array[i]>array[i+1])
+				{
+					temp=array[i];
+					array[i]=array[i+1];
+					array[i+1]=temp;
+					flag=true;
+				}
+			}
+		}
+	}
+	
+	//toString
+	public String toString()
+	{
+		String str=Integer.toString(array[0]);
+		
+		for (int i=1; i<length;i++)
+		{
+			str+=", "+array[i];
+		}
+		
+		return str;
+	}
+}
